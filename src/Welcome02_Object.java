@@ -20,7 +20,7 @@ public class Welcome02_Object {
       Observation ob2 = ds2.fetch("Observation", "weather", "temp_f", "wind_degrees");
       System.out.println(id2 + ": " + ob2);
       
-      String id3 = "KSEA";
+      String id3 = "KCLE";
       DataSource ds3 = DataSource.connect("http://weather.gov/xml/current_obs/" + id3 + ".xml"); 
       ds3.setCacheTimeout(15 * 60);  
       ds3.load();

@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 public class CerealRunner2 {
     // Declare your instance variable here
     // You need an ArrayList to store Cereal objects
-
+    ArrayList<Cereal> cereals;
 
 
     /**
@@ -34,9 +34,34 @@ public class CerealRunner2 {
      * 7. Handle FileNotFoundException with try-catch
      */
     public CerealRunner2() {
+        cereals = new ArrayList<Cereal>();
 
+        try {
+            File cerealList = new File("cerealSubset.csv");
+            Scanner fileScanner = new Scanner(cerealList);
 
+            while (true) {
+                if (!fileScanner.hasNextLine()) {
+                    fileScanner.close();
+                    System.out.println("Loaded " + cereals.size() + " cereals.\n");
+                }
 
+                String nextLine = fileScanner.nextLine();
+                String[] splitData = nextLine.split(",");
+                String name = splitData[0];
+                int calories = Integer.parseInt(splitData[1]);
+                int fiber = Integer.parseInt(splitData[2]);
+                int carbohydrates = Integer.parseInt(splitData[3]);
+                double cups = Double.parseDouble(splitData[4]);
+                
+                cereals.add(new Cereal(name, calories, fiber, carbohydrates, cups));
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("UH-OH!");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("MAMMA MIA!");
+        }
+        
 
     }
 
