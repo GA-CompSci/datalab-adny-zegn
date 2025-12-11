@@ -32,11 +32,13 @@ public class CerealRunner3 {
      * @return ArrayList of cereals meeting criteria
      */
     public static ArrayList<Cereal> filterCarbsPerCup(int min, int max) {
+        ArrayList<Cereal> result = new ArrayList<Cereal>();
+        for (Cereal cereal : cereals) {
+            double carbsperCup = cereal.getCarbohydrates() / cereal.getCups();
+            if (carbsperCup >= min && carbsperCup <= max) result.add(cereal);
+        }
 
-
-
-
-        return null;  // Replace with your code
+        return result;  // Replace with your code
     }
 
     /**

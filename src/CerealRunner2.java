@@ -44,6 +44,7 @@ public class CerealRunner2 {
                 if (!fileScanner.hasNextLine()) {
                     fileScanner.close();
                     System.out.println("Loaded " + cereals.size() + " cereals.\n");
+                    break;
                 }
 
                 String nextLine = fileScanner.nextLine();
@@ -57,9 +58,11 @@ public class CerealRunner2 {
                 cereals.add(new Cereal(name, calories, fiber, carbohydrates, cups));
             }
         } catch (FileNotFoundException e) {
-            System.out.println("UH-OH!");
+            System.out.println("UH-OH! NO FILE TO BE FOUND! - " + e);
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("MAMMA MIA!");
+            System.out.println("MAMMA MIA! NOT ENOUGH COLUMNS IN THE DATA! - " + e);
+        } catch (NumberFormatException e ) {
+            System.out.println("AY CARAMBA! ARE YOU SURE THE DATA IS NUMBERS? - " + e);
         }
         
 
@@ -69,7 +72,7 @@ public class CerealRunner2 {
      * Getter method for the cereals ArrayList
      */
     public ArrayList<Cereal> getCereals() {
-        return null;  // Fix this
+        return cereals;  // Fix this
     }
 
     /**
@@ -77,7 +80,7 @@ public class CerealRunner2 {
      */
     public static void main(String[] args) {
         // Create a CerealRunner2 object
-
+        CerealRunner2 cRunner2 = new CerealRunner2();
 
         // Print the number of records created
         // Should output: "76 records created."
