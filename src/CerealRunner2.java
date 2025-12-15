@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 public class CerealRunner2 {
     // Declare your instance variable here
     // You need an ArrayList to store Cereal objects
-    ArrayList<Cereal> cereals;
+    private static ArrayList<Cereal> cereals;
 
 
     /**
@@ -81,7 +81,10 @@ public class CerealRunner2 {
     public static void main(String[] args) {
         // Create a CerealRunner2 object
         CerealRunner2 cRunner2 = new CerealRunner2();
-
+        for (Cereal cereal : cereals) {
+            System.out.println(cereal.toString());
+        }
+        System.out.println(cereals.size() + " records created.");
         // Print the number of records created
         // Should output: "76 records created."
 
